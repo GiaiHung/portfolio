@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 
 function About() {
   return (
-    <div className="relative mx-2 flex h-screen max-w-5xl flex-col items-center space-y-6 text-center md:mx-auto md:text-left overflow-scroll">
-      <h1 className="mt-24 text-3xl tracking-[20px] text-gray-500">About</h1>
+    <div className="relative mx-2 flex h-screen max-w-5xl flex-col items-center space-y-6 overflow-scroll text-center md:mx-auto md:text-left">
+      <h1 className="mt-24 text-2xl text-center tracking-[20px] text-gray-500 md:mb-4">About</h1>
 
       <div className="flex h-full w-full flex-col items-center gap-6 md:flex-row md:items-start md:px-6">
         <motion.img
@@ -35,7 +35,7 @@ function About() {
             suscipit molestiae quae nulla dolorem tempore error! Nihil voluptatum molestias nulla
             eveniet magni provident blanditiis alias laborum. Ipsa, dicta debitis aut nesciunt ad
             repellat eos libero incidunt quaerat nostrum reprehenderit? Quas facere beatae magnam
-            incidunt! 
+            incidunt!
           </motion.div>
         </div>
       </div>
