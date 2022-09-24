@@ -11,7 +11,7 @@ function Skill({ directionLeft }: Props) {
       <motion.img
         src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png"
         alt=""
-        initial={{ opacity: 0, x: directionLeft ? -200 : 200 }}
+        initial={{ opacity: 0, x: directionLeft ? -200 : 100 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}

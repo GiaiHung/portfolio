@@ -4,7 +4,7 @@ import React from 'react'
 
 function ExperienceCard() {
   return (
-    <article className="flex w-[300px] shrink-0 cursor-pointer snap-center flex-col items-center space-y-4 rounded-lg bg-[#292929] py-6 opacity-50 transition-opacity duration-200 hover:opacity-100 md:w-[500px] lg:w-[600px]">
+    <article className="flex w-[90vw] shrink-0 cursor-pointer snap-center flex-col items-center space-y-4 rounded-lg bg-[#292929] py-6 opacity-50 transition-opacity duration-200 hover:opacity-100 md:w-[500px] lg:w-[600px]">
       <motion.img
         initial={{ opacity: 0, y: -100 }}
         viewport={{ once: true }}
@@ -18,11 +18,11 @@ function ExperienceCard() {
         alt=""
       />
 
-      <div className="space-y-2 px-0 md:px-10">
-        <h4 className="text-2xl font-light">Title</h4>
-        <p className="text-xl font-semibold">Company</p>
+      <div className="w-full space-y-2 px-4 text-center md:px-10 md:text-left">
+        <h4 className="text-2xl font-light">Manager at Amazon</h4>
+        <p className="text-xl font-semibold">Amazon</p>
         {/* Tech stack */}
-        <div className="flex items-center space-x-3">
+        <div className=" mx-auto flex items-center justify-center space-x-3">
           <img
             src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png"
             alt=""
@@ -44,14 +44,12 @@ function ExperienceCard() {
             className="h-10 w-10 rounded-full object-cover"
           />
         </div>
-        <p>STart - end</p>
-        <div className='h-[150px] overflow-scroll'>
-          <ul className="ml-6 list-disc space-y-4 text-lg pb-8">
-            <li>JOB 1</li>
-            <li>JOB 2</li>
-            <li>JOB 3</li>
-            <li>JOB 4</li>
-            <li>JOB 5</li>
+        <p>Start Nov 2021 - End Sep 2022</p>
+        <div className="h-[150px] overflow-scroll">
+          <ul className="ml-6 list-disc space-y-4 pb-8 text-lg">
+            <li>Working and developing new Amazon projects</li>
+            <li>Develop new logistics method for warehouse in Amazon</li>
+            <li>Mentor new employees</li>
           </ul>
         </div>
       </div>

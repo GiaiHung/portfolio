@@ -8,7 +8,7 @@ function Experience() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-full flex-col items-center justify-evenly space-y-6 overflow-hidden px-10 text-left"
+      className="relative mx-4 flex h-screen max-w-full flex-col items-center justify-evenly space-y-6 overflow-hidden text-left"
     >
       <h1 className="mt-16 text-2xl text-center tracking-[20px] text-gray-500 md:mb-4">Experience</h1>
 

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 function About() {
   return (
-    <div className="relative mx-2 flex h-screen max-w-5xl flex-col items-center space-y-6 overflow-scroll text-center md:mx-auto md:text-left">
+    <div className="relative flex h-screen max-w-5xl flex-col items-center space-y-6 overflow-scroll text-center md:mx-auto md:text-left">
       <h1 className="mt-24 text-2xl text-center tracking-[20px] text-gray-500 md:mb-4">About</h1>
 
       <div className="flex h-full w-full flex-col items-center gap-6 md:flex-row md:items-start md:px-6">
@@ -16,7 +16,7 @@ function About() {
           className="h-56 w-56 shrink-0 rounded-full object-cover md:mb-0 md:h-[400px] md:w-[300px] md:rounded-lg"
         />
 
-        <div className="flex-1 space-y-4 space-x-6">
+        <div className="flex-1 px-4">
           <h1 className="text-center text-2xl font-semibold ">
             Here is my little <span className="underline decoration-yellow-500">story</span>
           </h1>
