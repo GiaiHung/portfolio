@@ -8,6 +8,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -19,8 +20,16 @@ a {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 @layer components {
   .headerLink {
     @apply cursor-pointer opacity-75 transition hover:opacity-100;
+  }
+
+  .heroButton {
+    @apply cursor-pointer rounded-full border border-transparent px-3 py-2 text-xs uppercase tracking-widest text-gray-500 transition-all md:px-6 hover:border-[#f7ab0a]/40 hover:text-[#f7ab0a]/40;
   }
 }

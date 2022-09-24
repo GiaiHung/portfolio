@@ -36,9 +36,9 @@ function Header() {
         />
       </motion.div>
 
-      <Link href='/contact'>
+      <Link href="/contact">
         <motion.div
-          className="flex items-center cursor-pointer"
+          className="flex cursor-pointer items-center"
           initial={{
             x: 400,
             opacity: 0,
@@ -53,11 +53,7 @@ function Header() {
             duration: 1.2,
           }}
         >
-          <SocialIcon
-            network="email"
-            fgColor="gray"
-            bgColor="transparent"
-          />
+          <SocialIcon network="email" fgColor="gray" bgColor="transparent" />
           <p className="text-md hidden font-semibold uppercase text-gray-500 md:inline-flex">
             Get in touch
           </p>
