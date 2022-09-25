@@ -4,7 +4,7 @@ import React from 'react'
 
 function ExperienceCard() {
   return (
-    <article className="flex w-[90vw] shrink-0 cursor-pointer snap-center flex-col items-center space-y-4 rounded-lg bg-[#292929] py-6 opacity-50 transition-opacity duration-200 hover:opacity-100 md:w-[500px] lg:w-[600px]">
+    <article className="flex w-[90vw] shrink-0 cursor-grab flex-col items-center space-y-4 rounded-lg bg-[#292929] py-6 opacity-50 transition-opacity duration-200 hover:opacity-100 md:w-[500px]">
       <motion.img
         initial={{ opacity: 0, y: -100 }}
         viewport={{ once: true }}
@@ -13,7 +13,7 @@ function ExperienceCard() {
           opacity: 1,
         }}
         transition={{ duration: 1.2 }}
-        className="h-32 w-32 rounded-full object-cover object-center lg:h-[150px] lg:w-[150px]"
+        className="pointer-events-none h-32 w-32 rounded-full object-cover object-center lg:h-[150px] lg:w-[150px]"
         src="https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI"
         alt=""
       />
