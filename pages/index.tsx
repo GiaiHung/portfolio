@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import About from '../components/About'
 import Experience from '../components/Experience/Experience'
 import Header from '../components/Header'
@@ -21,20 +20,25 @@ const Home: NextPage = () => {
       <div className="z-0 h-screen overflow-scroll overflow-x-hidden bg-[rgb(36,36,36)] text-white">
         <Header />
 
-        <Hero />
-
-        <About />
-
-        <Experience />
-
-        <Skills />
-
-        <div className="relative">
+        <section id="hero">
+          <Hero />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="experience">
+          <Experience />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <div className="relative" id="projects">
           <div className="absolute top-[30%] h-[400px] w-full -skew-y-12 bg-[#f7ab0a]/10" />
           <Projects />
         </div>
-
-        <Contact />
+        <section id="contact">
+          <Contact />
+        </section>
       </div>
     </>
   )

@@ -12,7 +12,7 @@ function Projects() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <h1 className="text-center text-2xl tracking-[20px] text-gray-500 md:mb-4">
+      <h1 className="text-center mt-20 mb-10 text-2xl tracking-[20px] text-gray-500 md:mb-4">
         Projects
       </h1>
       <motion.div

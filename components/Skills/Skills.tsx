@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 function Skills() {
   return (
-    <div className="relative mx-2 flex h-screen max-w-5xl flex-col items-center md:mx-auto">
+    <div className="relative mx-2 flex max-w-5xl flex-col items-center md:mx-auto">
       <h1 className="mt-20 text-center text-2xl tracking-[20px] text-gray-500 md:mb-4">Skills</h1>
       <h2 className="text-lg text-center font-semibold tracking-[10px] text-gray-500">
         Hover for skills proficiency

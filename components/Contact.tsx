@@ -39,7 +39,7 @@ function Contact() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center pb-6">
-      <h1 className="mt-20 text-2xl tracking-[20px] text-gray-500">Contact</h1>
+      <h1 className="mt-20 mb-6 text-2xl tracking-[20px] text-gray-500">Contact</h1>
 
       <div className="flex flex-1 flex-col justify-center space-y-6 px-4">
         <h4 className="text-2xl text-center font-semibold tracking-wide lg:text-3xl">

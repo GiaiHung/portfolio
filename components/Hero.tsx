@@ -38,9 +38,6 @@ function Hero() {
       </div>
 
       <div className="relative z-10 flex items-center">
-        <Link href="#about">
-          <button className="heroButton">About</button>
-        </Link>
         <Link href="#experience">
           <button className="heroButton">Experience</button>
         </Link>
@@ -49,6 +46,9 @@ function Hero() {
         </Link>
         <Link href="#projects">
           <button className="heroButton">Projects</button>
+        </Link>
+        <Link href="/blogs">
+          <button className="heroButton">Blogs</button>
         </Link>
       </div>
     </div>
