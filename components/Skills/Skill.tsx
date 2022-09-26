@@ -18,11 +18,17 @@ function Skill({ directionLeft }: Props) {
         className="h-20 w-20 rounded-full border border-gray-500 object-cover filter duration-300 ease-in-out group-hover:grayscale lg:h-28 lg:w-28"
       />
 
-      <div className="absolute h-20 w-20 rounded-full opacity-0 duration-300 ease-in-out group-hover:bg-gray-200 group-hover:opacity-70 lg:h-28 lg:w-28">
+      <motion.div
+        initial={{ x: directionLeft ? -200 : 100 }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="absolute h-20 w-20 rounded-full opacity-0 duration-300 ease-in-out group-hover:bg-gray-200 group-hover:opacity-70 lg:h-28 lg:w-28"
+      >
         <div className="flex h-full items-center justify-center">
           <p className="text-2xl font-bold text-black">100%</p>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

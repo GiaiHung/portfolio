@@ -7,6 +7,7 @@ import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills/Skills'
+import Contact from '../components/Contact'
 
 const Home: NextPage = () => {
   return (
@@ -17,29 +18,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="z-0 h-screen snap-y snap-mandatory overflow-scroll bg-[rgb(36,36,36)] text-white">
+      <div className="z-0 h-screen overflow-scroll overflow-x-hidden bg-[rgb(36,36,36)] text-white">
         <Header />
 
-        <section id="hero" className="snap-start pt-[90px]">
-          <Hero />
-        </section>
+        <Hero />
 
-        <section id="about" className="snap-center">
-          <About />
-        </section>
+        <About />
 
-        <section id="experience" className="snap-center">
-          <Experience />
-        </section>
+        <Experience />
 
-        <section id="skills" className="snap-center">
-          <Skills />
-        </section>
+        <Skills />
 
-        <section id="projects" className="relative snap-center">
+        <div className="relative">
           <div className="absolute top-[30%] h-[400px] w-full -skew-y-12 bg-[#f7ab0a]/10" />
           <Projects />
-        </section>
+        </div>
+
+        <Contact />
       </div>
     </>
   )

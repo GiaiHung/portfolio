@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 
 function About() {
   return (
-    <div className="relative flex h-screen max-w-5xl flex-col items-center space-y-6 overflow-scroll text-center md:mx-auto md:text-left">
+    <div className="relative flex max-w-5xl flex-col items-center space-y-6 text-center md:mx-auto md:text-left">
       <h1 className="mt-24 text-center text-2xl tracking-[20px] text-gray-500 md:mb-4">About</h1>
 
-      <div className="flex h-full w-full flex-col items-center gap-6 md:flex-row md:items-start md:px-6">
+      <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:px-6">
         <motion.img
           src="https://hips.hearstapps.com/hmg-prod/images/longform-lead-credit-jake-stangel-1525106191.jpg?crop=0.5625xw:1xh;center,top&resize=640:*"
           initial={{ x: -300, opacity: 0 }}
