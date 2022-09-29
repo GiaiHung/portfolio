@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import React from 'react'
 import { urlFor } from '../sanity'
 import fetchProjects from '../utils/fetchProjects'
@@ -57,12 +56,13 @@ function Projects({ projects }: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const projects = await fetchProjects()
   return {
     props: {
       projects,
     },
+    revalidate: 180
   }
 }
 

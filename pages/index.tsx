@@ -1,4 +1,4 @@
-import type { GetServerSideProps, GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import About from '../components/About'
 import Experience from '../components/Experience/Experience'
@@ -57,7 +57,7 @@ const Home = ({ pageInfo, experience, skills, projects, socials }: Props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo = await fetchPageInfo()
   const experience = await fetchExperience()
   const skills = await fetchSkills()
@@ -72,6 +72,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
       socials,
       projects,
     },
+    revalidate: 180
   }
 }
 
