@@ -27,7 +27,7 @@ a {
 
 @layer components {
   .headerLink {
-    @apply cursor-pointer opacity-75 transition hover:opacity-100;
+    @apply text-gray-500 text-2xl cursor-pointer opacity-75 transition hover:opacity-100;
   }
 
   .heroButton {

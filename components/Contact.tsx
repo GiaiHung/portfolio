@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
+import { FaSpinner } from 'react-icons/fa'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -10,39 +11,44 @@ interface Inputs {
   message: string
 }
 
-function Contact() {
+interface Props {
+  pageInfo: PageInfo
+}
+
+function Contact({ pageInfo }: Props) {
   const form: any = useRef()
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset
+    formState: { isSubmitting },
+    reset,
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    emailjs.sendForm('service_1lm1wyk', 'template_b5jtzgj', form.current, 'T7DG6Qt3AJtQb2cfK').then(
-      (result) => {
-        console.log(result.text)
-      },
-      (error) => {
-        console.log(error.text)
-      }
-    )
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await emailjs
+      .sendForm('service_1lm1wyk', 'template_b5jtzgj', form.current, 'T7DG6Qt3AJtQb2cfK')
+      .then(
+        (result) => {
+          console.log(result.text)
+        },
+        (error) => {
+          console.log(error.text)
+        }
+      )
     reset({
       name: '',
       email: '',
       subject: '',
-      message: ''
+      message: '',
     })
-    alert('Mail sent!')
   }
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center pb-6">
+    <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center pb-10">
       <h1 className="mt-20 mb-6 text-2xl tracking-[20px] text-gray-500">Contact</h1>
 
       <div className="flex flex-1 flex-col justify-center space-y-6 px-4">
-        <h4 className="text-2xl text-center font-semibold tracking-wide lg:text-3xl">
+        <h4 className="text-center text-2xl font-semibold tracking-wide lg:text-3xl">
           Find my portfolio interesting?
           <span className="underline decoration-[#f7ab0a]/50">{` Let's talk!`}</span>
         </h4>
@@ -50,15 +56,15 @@ function Contact() {
         <div className="space-y-3">
           <div className="contactWrapper">
             <PhoneIcon className="contactIcon" />
-            <h2>0977867830</h2>
+            <h2>{pageInfo.phoneNumber}</h2>
           </div>
           <div className="contactWrapper">
             <MapPinIcon className="contactIcon" />
-            <h2>251D Hung Vuong, Ward 9 District 5</h2>
+            <h2>{pageInfo.address}</h2>
           </div>
           <div className="contactWrapper">
             <EnvelopeIcon className="contactIcon" />
-            <h2>hunggiaitruong288@gmail.com</h2>
+            <h2>{pageInfo.email}</h2>
           </div>
 
           <form
@@ -96,10 +102,15 @@ function Contact() {
               {...register('message', { required: true })}
             ></textarea>
             <button
-              className="block cursor-pointer rounded-md bg-[#f8b523] py-4 text-lg font-semibold text-black hover:bg-[#f7ab0a]"
+              className="flex cursor-pointer items-center justify-center gap-x-2 rounded-md bg-[#f8b523] py-4 text-lg font-semibold text-black hover:bg-[#f7ab0a]"
               onSubmit={handleSubmit(onSubmit)}
             >
-              Submit
+              {isSubmitting && (
+                <span className="animate-spin text-lg text-black">
+                  <FaSpinner />
+                </span>
+              )}
+              {isSubmitting ? <span>Submitting</span> : <span>Submit</span>}
             </button>
           </form>
         </div>

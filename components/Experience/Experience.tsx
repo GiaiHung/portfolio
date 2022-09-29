@@ -3,7 +3,11 @@ import { motion } from 'framer-motion'
 import ExperienceCard from './ExperienceCard'
 import { useMediaQuery } from 'react-responsive'
 
-function Experience() {
+interface Props {
+  experience: Experience[]
+}
+
+function Experience({ experience }: Props) {
   const isMobileOrTablet = useMediaQuery({ minWidth: 768 })
   const [cardWidth, setCardWidth] = useState<number>(0)
   const [multiply, setMultiply] = useState<number>(0)
@@ -32,10 +36,9 @@ function Experience() {
         dragConstraints={{ right: -10, left: -cardWidth * multiply }}
         className="flex w-full space-x-5"
       >
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+        {experience.map((item, index) => (
+          <ExperienceCard item={item} key={index} />
+        ))}
       </motion.div>
     </motion.div>
   )

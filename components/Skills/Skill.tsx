@@ -1,17 +1,19 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { urlFor } from '../../sanity'
 
 interface Props {
   directionLeft?: boolean
+  skill: Skill
 }
 
-function Skill({ directionLeft }: Props) {
+function Skill({ directionLeft, skill }: Props) {
   return (
     <div className="group relative flex cursor-pointer">
       <motion.img
-        src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png"
+        src={urlFor(skill.image).url()}
         alt=""
-        initial={{ opacity: 0, x: directionLeft ? -200 : 100 }}
+        initial={{ opacity: 0, x: directionLeft ? -100 : 100 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
@@ -26,7 +28,7 @@ function Skill({ directionLeft }: Props) {
         className="absolute h-20 w-20 rounded-full opacity-0 duration-300 ease-in-out group-hover:bg-gray-200 group-hover:opacity-70 lg:h-28 lg:w-28"
       >
         <div className="flex h-full items-center justify-center">
-          <p className="text-2xl font-bold text-black">100%</p>
+          <p className="text-2xl font-bold text-black">{skill.progress}%</p>
         </div>
       </motion.div>
     </div>

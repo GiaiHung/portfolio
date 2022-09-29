@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import About from '../components/About'
 import Experience from '../components/Experience/Experience'
@@ -7,8 +7,21 @@ import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills/Skills'
 import Contact from '../components/Contact'
+import fetchPageInfo from '../utils/fetchPageInfo'
+import fetchExperience from '../utils/fetchExperience'
+import fetchSkills from '../utils/fetchSkills'
+import fetchProjects from '../utils/fetchProjects'
+import fetchSocials from '../utils/fetchSocials'
 
-const Home: NextPage = () => {
+interface Props {
+  pageInfo: PageInfo
+  experience: Experience[]
+  skills: Skill[]
+  socials: Social[]
+  projects: Project[]
+}
+
+const Home = ({ pageInfo, experience, skills, projects, socials }: Props) => {
   return (
     <>
       <Head>
@@ -18,30 +31,48 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="z-0 h-screen overflow-scroll overflow-x-hidden bg-[rgb(36,36,36)] text-white">
-        <Header />
+        <Header socials={socials} />
 
         <section id="hero">
-          <Hero />
+          <Hero pageInfo={pageInfo} />
         </section>
         <section id="about">
-          <About />
+          <About pageInfo={pageInfo} />
         </section>
         <section id="experience">
-          <Experience />
+          <Experience experience={experience} />
         </section>
         <section id="skills">
-          <Skills />
+          <Skills skills={skills} />
         </section>
         <div className="relative" id="projects">
           <div className="absolute top-[30%] h-[400px] w-full -skew-y-12 bg-[#f7ab0a]/10" />
-          <Projects />
+          <Projects projects={projects} />
         </div>
         <section id="contact">
-          <Contact />
+          <Contact pageInfo={pageInfo} />
         </section>
       </div>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo = await fetchPageInfo()
+  const experience = await fetchExperience()
+  const skills = await fetchSkills()
+  const socials = await fetchSocials()
+  const projects = await fetchProjects()
+
+  return {
+    props: {
+      pageInfo,
+      experience,
+      skills,
+      socials,
+      projects,
+    },
+  }
 }
 
 export default Home
