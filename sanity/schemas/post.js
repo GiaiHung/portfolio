@@ -21,7 +21,7 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'author' },
     },
     {
       name: 'mainImage',
@@ -35,12 +35,17 @@ export default {
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      of: [{ type: 'reference', to: { type: 'category' } }],
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
     },
     {
       name: 'body',
