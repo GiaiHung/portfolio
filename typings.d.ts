@@ -58,3 +58,24 @@ interface Experience {
   points: string[]
   technologies: Skill[]
 }
+
+interface Post extends SanityBody {
+  title: string
+  description: string
+  author: {
+    name: string
+    image: Image
+  }
+  slug: {
+    _type: string
+    current: string
+  }
+  categories: Category[]
+  body: object[]
+  mainImage: Image
+} 
+
+interface Category {
+  title: string
+  description: string
+}

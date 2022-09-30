@@ -24,7 +24,13 @@ function Hero({ pageInfo }: Props) {
     <div className="flex h-screen flex-col items-center justify-center space-y-4 overflow-hidden text-center md:space-y-8">
       <BackgroundCircle />
       <div className="relative h-32 w-32 overflow-hidden rounded-full">
-        <Image src={urlFor(pageInfo.profilePic).url()} alt="" objectFit="cover" layout="fill" />
+        <Image
+          src={urlFor(pageInfo.profilePic).url()}
+          alt=""
+          objectFit="cover"
+          layout="fill"
+          priority
+        />
       </div>
 
       <div className="relative z-10">
@@ -47,8 +53,10 @@ function Hero({ pageInfo }: Props) {
         <Link href="#projects">
           <button className="heroButton">Projects</button>
         </Link>
-        <Link href="/blogs">
-          <button className="heroButton">Blogs</button>
+        <Link href="/blogs" passHref>
+          <a target="_blank" rel="noreferrer">
+            <button className="heroButton">Blogs</button>
+          </a>
         </Link>
       </div>
     </div>
