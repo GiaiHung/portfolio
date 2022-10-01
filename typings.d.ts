@@ -78,4 +78,8 @@ interface Post extends SanityBody {
 interface Category {
   title: string
   description: string
+  slug: {
+    _type: string
+    current: string
+  }
 }

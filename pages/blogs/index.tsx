@@ -5,13 +5,20 @@ import { Categories, Header, PostCard, Widget } from '../../components/Blogs'
 import { GetStaticProps } from 'next'
 import axios from 'axios'
 import fetchPosts from '../../utils/fetchPosts'
+import fetchCategories from '../../utils/fetchCategories'
+import { FaTimes } from 'react-icons/fa'
+import Link from 'next/link'
+
+import { useRecoilState } from 'recoil'
+import sidebarState from '../../atoms/sidebarAtom'
 
 interface Props {
   posts: Post[]
+  categories: Category[]
 }
 
-function Blogs({ posts }: Props) {
-  console.log(posts)
+function Blogs({ posts, categories }: Props) {
+  const [sidebarActive, setSidebarActive] = useRecoilState(sidebarState)
 
   return (
     <div className={`${styles.blogs}`}>
@@ -22,7 +29,7 @@ function Blogs({ posts }: Props) {
       </Head>
 
       <div className="mx-auto mb-8 max-w-7xl space-y-8 px-10">
-        <Header />
+        <Header categories={categories} />
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Posts */}
           <div className="col-span-1 lg:col-span-8">
@@ -31,7 +38,7 @@ function Blogs({ posts }: Props) {
             ))}
           </div>
           {/* Widget */}
-          <div className="col-span-1 lg:col-span-4 sticky top-8">
+          <div className="sticky top-8 col-span-1 lg:col-span-4">
             <div className="">
               <Widget />
               <Categories />
@@ -39,16 +46,38 @@ function Blogs({ posts }: Props) {
           </div>
         </div>
       </div>
+
+      <div
+        className={`fixed top-0 bottom-0 left-0 right-0 z-50 flex h-screen w-screen translate-x-full flex-col items-center justify-center gap-y-8 bg-white opacity-0 duration-300 ease-linear ${
+          sidebarActive ? 'sidebarActive' : ''
+        }`}
+      >
+        <div
+          className="absolute right-6 top-6 cursor-pointer text-2xl"
+          onClick={() => setSidebarActive(false)}
+        >
+          <FaTimes />
+        </div>
+        {categories.map((category) => (
+          <Link href={`/blogs/category/${category.slug.current}`} key={category.slug.current}>
+            <span className="cursor-pointer text-lg font-semibold text-black transition hover:text-pink-500">
+              {category.title}
+            </span>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const posts = await fetchPosts()
+  const categories = await fetchCategories()
 
   return {
     props: {
       posts,
+      categories,
     },
   }
 }
