@@ -2,7 +2,7 @@ import styles from '../../styles/blogs.module.css'
 import Head from 'next/head'
 import React from 'react'
 import { Categories, Header, PostCard, Widget } from '../../components/Blogs'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import axios from 'axios'
 import fetchPosts from '../../utils/fetchPosts'
 import fetchCategories from '../../utils/fetchCategories'
@@ -70,7 +70,7 @@ function Blogs({ posts, categories }: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const posts = await fetchPosts()
   const categories = await fetchCategories()
 
