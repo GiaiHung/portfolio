@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 const sidebarState = atom({
-  key: 'sidebar',
+  key: 'sidebarActive',
   default: false,
 })
 

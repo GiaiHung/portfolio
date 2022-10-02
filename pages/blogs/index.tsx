@@ -1,23 +1,24 @@
 import styles from '../../styles/blogs.module.css'
 import Head from 'next/head'
 import React from 'react'
-import { Categories, Header, PostCard, Widget } from '../../components/Blogs'
-import { GetServerSideProps, GetStaticProps } from 'next'
-import axios from 'axios'
-import fetchPosts from '../../utils/fetchPosts'
-import fetchCategories from '../../utils/fetchCategories'
+import { Header, PostCard, Widget } from '../../components/Blogs'
+import { GetServerSideProps } from 'next'
+import fetchPosts from '../../utils/Post/fetchPosts'
+import fetchCategories from '../../utils/Post/fetchCategories'
 import { FaTimes } from 'react-icons/fa'
 import Link from 'next/link'
 
 import { useRecoilState } from 'recoil'
 import sidebarState from '../../atoms/sidebarAtom'
+import fetchCurrentPosts from '../../utils/Post/fetchCurrentPosts'
 
 interface Props {
   posts: Post[]
   categories: Category[]
+  currentPosts: Post[]
 }
 
-function Blogs({ posts, categories }: Props) {
+function Blogs({ posts, categories, currentPosts }: Props) {
   const [sidebarActive, setSidebarActive] = useRecoilState(sidebarState)
 
   return (
@@ -30,19 +31,16 @@ function Blogs({ posts, categories }: Props) {
 
       <div className="mx-auto mb-8 max-w-7xl space-y-8 px-10">
         <Header categories={categories} />
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+        <div className="flex flex-col-reverse gap-12 lg:grid lg:grid-cols-12">
           {/* Posts */}
-          <div className="col-span-1 lg:col-span-8">
+          <div className="space-y-10 lg:col-span-8">
             {posts.map((post, index) => (
               <PostCard key={index} post={post} />
             ))}
           </div>
           {/* Widget */}
-          <div className="sticky top-8 col-span-1 lg:col-span-4">
-            <div className="">
-              <Widget />
-              <Categories />
-            </div>
+          <div className="relative top-4 lg:sticky lg:col-span-4">
+            <Widget currentPosts={currentPosts} />
           </div>
         </div>
       </div>
@@ -60,7 +58,10 @@ function Blogs({ posts, categories }: Props) {
         </div>
         {categories.map((category) => (
           <Link href={`/blogs/category/${category.slug.current}`} key={category.slug.current}>
-            <span className="cursor-pointer text-lg font-semibold text-black transition hover:text-pink-500">
+            <span
+              className="cursor-pointer text-lg font-semibold text-black transition hover:text-pink-500"
+              onClick={() => setSidebarActive(false)}
+            >
               {category.title}
             </span>
           </Link>
@@ -73,11 +74,13 @@ function Blogs({ posts, categories }: Props) {
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const posts = await fetchPosts()
   const categories = await fetchCategories()
+  const currentPosts = await fetchCurrentPosts()
 
   return {
     props: {
       posts,
       categories,
+      currentPosts,
     },
   }
 }
