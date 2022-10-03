@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { useRecoilState } from 'recoil'
 import sidebarState from '../../atoms/sidebarAtom'
 import fetchCurrentPosts from '../../utils/Post/fetchCurrentPosts'
+import CarouselPosts from '../../components/Blogs/CarouselPosts'
 
 interface Props {
   posts: Post[]
@@ -34,6 +35,7 @@ function Blogs({ posts, categories, currentPosts }: Props) {
         <div className="flex flex-col-reverse gap-12 lg:grid lg:grid-cols-12">
           {/* Posts */}
           <div className="space-y-10 lg:col-span-8">
+            <CarouselPosts posts={posts.slice(0, 9)} />
             {posts.map((post, index) => (
               <PostCard key={index} post={post} />
             ))}

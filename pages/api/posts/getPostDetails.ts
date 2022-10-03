@@ -23,7 +23,15 @@ categories[]->{
   description
 },
 body,
-  }
+'comment': *[_type == "comment" && post._ref == ^._id && approved == true]{
+  _id, 
+  name, 
+  email, 
+  comment, 
+  image,
+  _createdAt
+},
+}
 `
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {

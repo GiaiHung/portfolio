@@ -70,6 +70,7 @@ interface Post extends SanityBody {
   categories: Category[]
   body: object[]
   mainImage: Image
+  comment: CommentProps[]
 } 
 
 interface Category {
@@ -85,4 +86,11 @@ interface Author extends SanityBody {
   name: string
   image: string
   bio: any[]
+}
+
+interface CommentProps extends SanityBody {
+  comment: string
+  email: string
+  name: string
+  image: string
 }

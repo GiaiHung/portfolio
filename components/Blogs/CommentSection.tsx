@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 import React, { useState } from 'react'
 import Button from '../Helper/Button'
 
 type Props = {
   id: string
+  comments: CommentProps[]
 }
 
-function CommentSection({ id }: Props) {
+function CommentSection({ id, comments }: Props) {
   const [commentValue, setCommentValue] = useState<string>()
   const [submitted, setSubmitted] = useState<boolean>(false)
   const [submitting, setSubmitting] = useState<boolean>(false)
@@ -56,12 +58,35 @@ function CommentSection({ id }: Props) {
               loading={submitting}
             />
           ) : (
-            <h2 className="text-lg font-semibold">Thanks for submitting 🧡🧡! Your comment will be displayed after we reviewed it</h2>
+            <h2 className="text-lg font-semibold">
+              Thanks for submitting 🧡🧡! Your comment will be displayed after we reviewed it
+            </h2>
           )}
         </>
       ) : (
         <h2 className="text-lg font-semibold">Please sign in to comment 😉😉</h2>
       )}
+
+      {/* Comments */}
+      <div className='max-w-xl mx-auto'>
+        {comments.length === 0 ? (
+          <h2 className="text-center text-2xl font-semibold">Be the first to comment!</h2>
+        ) : (
+          <div className="my-4 space-y-4">
+            {comments.map((comment) => (
+              <div key={comment._id} className="flex items-center gap-x-4">
+                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
+                  <Image src={comment.image} alt="" layout="fill" objectFit="cover" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold">{comment.name}</h2>
+                  <p className="text-sm lg:text-lg">{comment.comment}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

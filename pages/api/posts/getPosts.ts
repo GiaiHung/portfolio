@@ -22,6 +22,13 @@ const query = groq`
     description
   },
   body,
+  'comment': *[_type == "comment" && post._ref == ^._id && approved == true]{
+    _id, 
+    name, 
+    email, 
+    comment, 
+    _createdAt
+},
   }
 `
 

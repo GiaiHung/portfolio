@@ -4,6 +4,9 @@
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .blogs::before {
@@ -25,22 +28,6 @@
   text-shadow: 0px 2px 0px rgb(0 0 0 / 30%);
 }
 
-.adjacent-post .arrow-btn {
-  transition: width 300ms ease;
-  width: 50px;
+.image-item {
+  padding-left: 10px;
 }
-
-.adjacent-post:hover .arrow-btn {
-  width: 60px;
-}
-
-.react-multi-carousel-list .arrow-btn {
-  transition: width 300ms ease;
-  width: 50px;
-}
-
-.react-multi-carousel-list .arrow-btn:hover {
-  width: 60px;
-}
-
-

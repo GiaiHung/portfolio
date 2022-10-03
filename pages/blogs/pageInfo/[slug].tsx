@@ -18,6 +18,7 @@ interface Props {
 }
 
 function Blog({ postDetails }: Props) {
+  console.log(postDetails)
   return (
     <>
       <Head>
@@ -82,7 +83,7 @@ function Blog({ postDetails }: Props) {
         {/* Author */}
         <Author author={postDetails.author} />
         {/* Comment */}
-        <CommentSection id={postDetails._id}/>
+        <CommentSection id={postDetails._id} comments={postDetails.comment}/>
       </div>
     </>
   )
