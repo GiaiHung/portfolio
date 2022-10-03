@@ -11,13 +11,13 @@ import { urlFor } from '../../../sanity'
 
 import styles from '../../../styles/blogs.module.css'
 import Author from '../../../components/Blogs/Author'
+import { CommentSection } from '../../../components/Blogs'
 
 interface Props {
   postDetails: Post
 }
 
 function Blog({ postDetails }: Props) {
-  console.log(postDetails.author)
   return (
     <>
       <Head>
@@ -81,6 +81,8 @@ function Blog({ postDetails }: Props) {
 
         {/* Author */}
         <Author author={postDetails.author} />
+        {/* Comment */}
+        <CommentSection id={postDetails._id}/>
       </div>
     </>
   )

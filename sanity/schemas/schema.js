@@ -13,6 +13,7 @@ import experience from './experience'
 import project from './project'
 import skill from './skill'
 import social from './social'
+import comment from './comment'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,5 +28,6 @@ export default createSchema({
     author,
     category,
     blockContent,
+    comment,
   ]),
 })

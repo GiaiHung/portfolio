@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
-import { FaSpinner } from 'react-icons/fa'
+import { FaSpinner, FaMapMarkerAlt } from 'react-icons/fa'
+import { BsFillTelephoneFill, BsEnvelopeFill } from 'react-icons/bs'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -55,15 +55,15 @@ function Contact({ pageInfo }: Props) {
 
         <div className="space-y-3">
           <div className="contactWrapper">
-            <PhoneIcon className="contactIcon" />
+            <BsFillTelephoneFill className="contactIcon" />
             <h2>{pageInfo.phoneNumber}</h2>
           </div>
           <div className="contactWrapper">
-            <MapPinIcon className="contactIcon" />
+            <FaMapMarkerAlt className="contactIcon" />
             <h2>{pageInfo.address}</h2>
           </div>
           <div className="contactWrapper">
-            <EnvelopeIcon className="contactIcon" />
+            <BsEnvelopeFill className="contactIcon" />
             <h2>{pageInfo.email}</h2>
           </div>
 

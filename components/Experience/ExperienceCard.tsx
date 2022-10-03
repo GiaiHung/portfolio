@@ -40,7 +40,7 @@ function ExperienceCard({ item }: Props) {
         <p>
           Start {item.dateStarted} - End {item.dateEnded}
         </p>
-        <div className="h-[150px] overflow-scroll">
+        <div className="h-[200px] overflow-scroll">
           <ul className="ml-6 list-disc space-y-4 pb-8 text-lg">
             {item.points.map((point, index) => (
               <li key={index}>{point}</li>
