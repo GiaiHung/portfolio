@@ -26,11 +26,11 @@ function PostCard({ post }: Props) {
             <img
               src={urlFor(post.author.image).url()}
               alt=""
-              className="h-10 w-10 rounded-full object-cover"
+              className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
             />
-            <h2 className="text-lg font-semibold">{post.author.name}</h2>
+            <h2 className="text-sm font-semibold lg:text-lg">{post.author.name}</h2>
           </div>
-          <span className="flex gap-x-2 text-gray-500">
+          <span className="flex gap-x-2 text-sm text-gray-500 lg:text-lg">
             <AiOutlineCalendar className="h-6 w-6 text-gray-500" />
             {moment(post._createdAt).format('MMM DD, YYYY')}
           </span>

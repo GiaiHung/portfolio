@@ -62,10 +62,7 @@ interface Experience {
 interface Post extends SanityBody {
   title: string
   description: string
-  author: {
-    name: string
-    image: Image
-  }
+  author: Author
   slug: {
     _type: string
     current: string
@@ -82,4 +79,10 @@ interface Category {
     _type: string
     current: string
   }
+}
+
+interface Author extends SanityBody {
+  name: string
+  image: string
+  bio: any[]
 }

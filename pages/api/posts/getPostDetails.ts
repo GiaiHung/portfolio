@@ -12,7 +12,8 @@ const query = groq`
   title,
   author->{
   name,
-  image
+  image,
+  bio
 },
 description,
 mainImage,
@@ -27,7 +28,6 @@ body,
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const slug = req.query.slug
-  console.log(slug)
 
   const postDetails: Post[] = await sanityClient.fetch(query, {
     slug,
