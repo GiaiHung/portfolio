@@ -37,55 +37,57 @@ function CommentSection({ id, comments }: Props) {
   }
 
   return (
-    <div className="mx-auto flex max-w-5xl flex-col items-center space-y-4">
-      <h1 className="mb-4 border-b-2 border-blue-500 pb-2 text-center text-2xl font-semibold">
+    <div className="mx-auto flex max-w-5xl flex-col space-y-4">
+      <h1 className="mb-4 border-b-2 border-blue-500 pb-2 text-center text-2xl font-semibold max-w-lg mx-auto">
         Leave a Comment!
       </h1>
-      <textarea
-        className="w-full max-w-lg rounded-2xl bg-gray-100 p-4 text-lg outline-none ring-2 ring-gray-300 focus:ring-gray-500"
-        placeholder="Tell us what you think"
-        value={commentValue}
-        onChange={(e) => setCommentValue(e.target.value)}
-        spellCheck={false}
-      />
-      {session ? (
-        <>
-          {!submitted ? (
-            <Button
-              title="Submit"
-              width="w-full max-w-lg"
-              onClick={submitComment}
-              loading={submitting}
-            />
-          ) : (
-            <h2 className="text-lg font-semibold">
-              Thanks for submitting 🧡🧡! Your comment will be displayed after we reviewed it
-            </h2>
-          )}
-        </>
-      ) : (
-        <h2 className="text-lg font-semibold">Please sign in to comment 😉😉</h2>
-      )}
-
-      {/* Comments */}
-      <div className='max-w-xl mx-auto'>
-        {comments.length === 0 ? (
-          <h2 className="text-center text-2xl font-semibold">Be the first to comment!</h2>
+      <div className='mx-auto max-w-lg w-full space-y-4'>
+        <textarea
+          className="w-full max-w-lg rounded-2xl bg-gray-100 p-4 text-lg outline-none ring-2 ring-gray-300 focus:ring-gray-500"
+          placeholder="Tell us what you think"
+          value={commentValue}
+          onChange={(e) => setCommentValue(e.target.value)}
+          spellCheck={false}
+        />
+        {session ? (
+          <>
+            {!submitted ? (
+              <Button
+                title="Submit"
+                width="w-full max-w-lg"
+                onClick={submitComment}
+                loading={submitting}
+              />
+            ) : (
+              <h2 className="text-lg font-semibold">
+                Thanks for submitting 🧡🧡! Your comment will be displayed after we reviewed it
+              </h2>
+            )}
+          </>
         ) : (
-          <div className="my-4 space-y-4">
-            {comments.map((comment) => (
-              <div key={comment._id} className="flex items-center gap-x-4">
-                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
-                  <Image src={comment.image} alt="" layout="fill" objectFit="cover" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-semibold">{comment.name}</h2>
-                  <p className="text-sm lg:text-lg">{comment.comment}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-lg font-semibold">Please sign in to comment 😉😉</h2>
         )}
+  
+        {/* Comments */}
+        <div className='max-w-lg'>
+          {comments.length === 0 ? (
+            <h2 className="text-center text-2xl font-semibold">Be the first to comment!</h2>
+          ) : (
+            <div className="my-4 space-y-4">
+              {comments.map((comment) => (
+                <div key={comment._id} className="flex items-center gap-x-4">
+                  <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
+                    <Image src={comment.image} alt="" layout="fill" objectFit="cover" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-semibold">{comment.name}</h2>
+                    <p className="text-sm lg:text-lg">{comment.comment}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

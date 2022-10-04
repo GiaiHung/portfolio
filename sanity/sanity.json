@@ -20,6 +20,10 @@
   },
   "parts": [
     {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
       "implements": "part:@sanity/base/absolutes",
       "path": "./bundleChecker.js"
     }
