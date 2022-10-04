@@ -19,7 +19,8 @@ const query = groq`
   slug,
   categories[]->{
     title,
-    description
+    description,
+    slug
   },
   body,
   'comment': *[_type == "comment" && post._ref == ^._id && approved == true]{

@@ -17,7 +17,7 @@ function CarouselCard({ post }: Props) {
       <div className="absolute h-72 w-full bg-gradient-to-b from-gray-400 via-gray-700 to-black opacity-50"></div>
       <div className="absolute flex h-full w-full flex-col items-center justify-between gap-y-6 p-4 text-white">
         <p className="font-light">{moment(post._createdAt).format('MMM DD YYYY')}</p>
-        <h2 className="text-xl font-semibold">
+        <h2 className="text-xl font-semibold text-center">
           {post.title.length > 60 ? `${post.title.substring(0, 60)}...` : post.title}
         </h2>
         <div className="flex flex-col items-center">

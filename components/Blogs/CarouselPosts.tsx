@@ -48,7 +48,7 @@ function CarouselPosts({ posts }: Props) {
         responsive={responsive}
         infinite={true}
         containerClass="w-full"
-        itemClass="pl-5"
+        itemClass="pr-5"
       >
         {posts.map((post) => (
           <CarouselCard post={post} key={post._id} />

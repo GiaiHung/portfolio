@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil'
 import sidebarState from '../../atoms/sidebarAtom'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
+import categoryAtom from '../../atoms/categoryAtom'
 
 interface Props {
   categories: Category[]
@@ -13,6 +14,7 @@ interface Props {
 
 function Header({ categories }: Props) {
   const [sidebarActive, setSidebarActive] = useRecoilState(sidebarState)
+  const [categoryState, setCategoryState] = useRecoilState(categoryAtom)
 
   const { data: session }: any = useSession()
 
@@ -31,12 +33,26 @@ function Header({ categories }: Props) {
         </div>
 
         <div className="hidden items-center gap-x-4 md:flex">
+          <div onClick={() => setCategoryState('all')}>
+            <span
+              className="cursor-pointer text-lg font-semibold text-white transition hover:text-pink-500"
+              onClick={() => setSidebarActive(false)}
+            >
+              All
+            </span>
+          </div>
           {categories.map((category) => (
-            <Link href={`/blogs/category/${category.slug.current}`} key={category.slug.current}>
-              <span className="cursor-pointer text-lg font-semibold text-white transition hover:text-pink-500">
+            <div
+              key={category.slug.current}
+              onClick={() => setCategoryState(category.slug.current)}
+            >
+              <span
+                className="cursor-pointer text-lg font-semibold text-white transition hover:text-pink-500"
+                onClick={() => setSidebarActive(false)}
+              >
                 {category.title}
               </span>
-            </Link>
+            </div>
           ))}
         </div>
         {!session ? (
