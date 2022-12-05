@@ -45,6 +45,7 @@ interface Project extends SanityBody {
   linkToBuild: string
   summary: string
   technologies: Skill[]
+  demo: boolean
 }
 
 interface Experience {

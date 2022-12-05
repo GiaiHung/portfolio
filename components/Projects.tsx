@@ -11,6 +11,7 @@ interface Props {
 
 function Projects({ projects }: Props) {
   const [screenWidth, setScreenWidth] = useState(1000)
+  const demoProjects = projects.filter(project => project.demo)
 
   useEffect(() => {
     setScreenWidth(window.innerWidth)
@@ -33,7 +34,7 @@ function Projects({ projects }: Props) {
           dragConstraints={{ right: 0, left: -screenWidth * 3 }}
           className="flex overflow-y-hidden"
         >
-          {projects.slice(0, 4).map((project, index) => (
+          {demoProjects.map((project, index) => (
             <div
               key={index}
               className="flex w-screen flex-shrink-0 cursor-grab flex-col items-center space-y-8 px-6"
@@ -52,7 +53,7 @@ function Projects({ projects }: Props) {
                   transition={{ duration: 1 }}
                   src={urlFor(project.image).url()}
                   alt=""
-                  className="pointer-events-none h-[200px] w-[90vw] object-cover md:h-[300px] md:w-[540px]"
+                  className="pointer-events-none h-[350px] w-[90vw] object-cover md:h-[400px] md:w-[640px]"
                 />
               </a>
 

@@ -33,5 +33,10 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: { type: 'skill' } }],
     },
+    {
+      name: 'demo',
+      title: 'Demo',
+      type: 'boolean',
+    },
   ],
 }
